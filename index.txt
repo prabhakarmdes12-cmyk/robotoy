@@ -3,110 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Baloo | The Future of Empathic Robotics</title>
+    <title>Baloo | The Future of Autonomous Empathic Play</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #fff; scroll-behavior: smooth; }
-        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
-        .hero-gradient { background: radial-gradient(circle at 50% 50%, #1e293b 0%, #050505 100%); }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .accent-border { border-left: 4px solid #3b82f6; }
-        .cta-button { background: linear-gradient(90deg, #3b82f6, #2563eb); transition: all 0.3s ease; }
-        .cta-button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        :root { --neon-blue: #00f2ff; --deep-space: #030406; }
+        body { font-family: 'Outfit', sans-serif; background-color: var(--deep-space); color: #fff; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .text-gradient { background: linear-gradient(to right, #fff, var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .img-box { position: relative; width: 100%; border-radius: 2.5rem; overflow: hidden; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); transition: all 0.5s ease; }
+        .img-box:hover { border-color: var(--neon-blue); transform: translateY(-5px); }
+        .nav-link { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #999; transition: color 0.3s; }
+        .nav-link:hover { color: var(--neon-blue); }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <nav class="fixed w-full z-50 glass py-4 px-8 flex justify-between items-center">
-        <div class="text-xl font-bold tracking-tighter">PROJECT <span class="text-blue-500">BALOO</span></div>
-        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-semibold">
-            <a href="#philosophy" class="hover:text-blue-400">Philosophy</a>
-            <a href="#tech" class="hover:text-blue-400">Technology</a>
-            <a href="#invest" class="hover:text-blue-400 text-blue-400">Invest</a>
+    <nav class="fixed w-full z-50 p-6">
+        <div class="max-w-7xl mx-auto glass rounded-2xl px-8 py-4 flex justify-between items-center">
+            <div class="font-black tracking-tighter text-2xl italic">BALOO<span class="text-cyan-400">.</span></div>
+            <div class="hidden md:flex space-x-10">
+                <a href="#philosophy" class="nav-link">Philosophy</a>
+                <a href="#engineering" class="nav-link">Engineering</a>
+                <a href="#governance" class="nav-link">Governance</a>
+            </div>
+            <a href="mailto:prabhakarmdes12@gmail.com" class="bg-white text-black px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-cyan-400 transition">Partner With Us</a>
         </div>
     </nav>
 
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 hero-gradient">
-        <div class="inline-block px-4 py-1 mb-6 border border-blue-500/30 rounded-full text-blue-400 text-xs font-bold tracking-widest uppercase bg-blue-500/10">
-            Now Open for Seed Investment & Early Orders
-        </div>
-        <h1 class="text-5xl md:text-8xl font-bold mb-6 tracking-tight">The Guardian <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">Companion.</span></h1>
-        <p class="max-w-2xl text-gray-400 text-lg md:text-xl mb-10 leading-relaxed">
-            Born from IIT Delhi design rigor and 8+ years of UX mastery. A ride-on mentor that blends the warmth of a teddy bear with the safety of advanced edge-AI.
+    <header class="min-h-screen flex flex-col justify-center items-center px-6 pt-32 pb-16 text-center">
+        <h1 class="text-6xl md:text-9xl font-black tracking-tighter text-gradient leading-none mb-8">REDEFINING <br>COMPANIONSHIP.</h1>
+        <p class="max-w-2xl text-gray-400 text-lg md:text-xl mb-12 font-light leading-relaxed">
+            Baloo is a high-performance **Guardian Platform** that integrates Edge-AI and modular robotics to provide screen-free mentorship for the next generation.
         </p>
-        <div class="flex flex-col md:flex-row gap-4">
-            <a href="#invest" class="cta-button text-white px-10 py-4 rounded-full font-bold">Reserve Serial No. 001-100</a>
-            <a href="#tech" class="glass text-white px-10 py-4 rounded-full font-bold hover:bg-white/10">View Blueprint</a>
+        <div class="max-w-5xl w-full img-box shadow-[0_20px_80px_rgba(0,0,0,0.8)]">
+            <img src="Images/hero-panda.jpg" alt="Baloo Flagship Product">
         </div>
-    </section>
+    </header>
 
-    <section id="philosophy" class="py-24 px-8 container mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10 border border-white/10">
-                <img src="lucid-origin_An_industrial_design_concept_render_of_a_hybrid_ride-on_robotic_companion_for_ch-0 (1).jpg" alt="Project Baloo Concept" class="w-full">
-            </div>
-            <div>
-                <h2 class="text-4xl font-bold mb-8 italic">"Torn, but Functional."</h2>
-                <div class="space-y-6 text-gray-400 text-lg">
-                    <p class="accent-border pl-6">
-                        In the current market, high-tech toys are fragile glass-and-plastic "bricks" waiting to happen. Parents fear the break; kids fear the loss.
-                    </p>
-                    <p>
-                        <strong>Our Design Philosophy:</strong> We decouple the <em>Aesthetic Skin</em> from the <em>Functional Soul</em>. Based on the "Grounded Play" theory, Project Baloo features a high-strength internal exoskeleton.
-                    </p>
-                    <p>
-                        Even if the plush skin is torn or removed for washing, the robot remains a fully functional, sleek mechanical beast. It is built to survive the rough-and-tumble of a child's real world.
-                    </p>
+    <section id="philosophy" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-24 items-center">
+            <div class="space-y-12">
+                <h2 class="text-5xl font-black italic leading-tight">Human-Centric <br><span class="text-cyan-400">Design Logic.</span></h2>
+                <div class="space-y-10">
+                    <div>
+                        <h4 class="text-xl font-bold mb-3">Modular Durability</h4>
+                        <p class="text-gray-400 leading-relaxed">
+                            Our "Torn-but-Functional" architecture decouples the aesthetic skin from the rugged mechanical exoskeleton, ensuring product longevity in high-impact environments.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-3">Autonomous Sovereignty</h4>
+                        <p class="text-gray-400 leading-relaxed">
+                            Baloo operates on a proprietary Edge-AI stack. All environmental data and voice interactions are processed locally, ensuring 100% data privacy.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="tech" class="py-24 bg-white/5 border-y border-white/5">
-        <div class="container mx-auto px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Engineering a Beast with a Heart</h2>
-                <p class="text-gray-400">A look inside the "Brain-in-Head" architecture.</p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto mb-16 rounded-3xl overflow-hidden border border-blue-500/20">
-                <img src="internal_diagram_baloo.jpg" alt="Internal Skeleton Diagram" class="w-full">
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-blue-400">Head-Mounted Intelligence</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">By moving the Compute Unit (Raspberry Pi/ESP32) into the head, we shield the "brain" from floor vibrations while placing it inches from the Watch-UI and Mic-array.</p>
-                </div>
-                <div class="glass p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-blue-400">The Spinal Conduit</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">A central power spine connects the high-torque hub motors to the brain, ensuring fluid motion without compromising the modularity of the external skins.</p>
-                </div>
-                <div class="glass p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-blue-400">Rear-Access Maintenance</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">An integrated rear zipper allows parents easy access to the central LFP battery pack and charging port while keeping the "magic" alive for the child.</p>
-                </div>
+            <div class="img-box">
+                <img src="Images/concept-soft.jpg" alt="Material Excellence">
             </div>
         </div>
     </section>
 
-    <section id="invest" class="py-32 px-4 text-center">
-        <div class="glass max-w-4xl mx-auto p-12 md:p-24 rounded-[40px] border-blue-500/30">
-            <h2 class="text-4xl md:text-6xl font-bold mb-8">Join the Vanguard of <br>Home Robotics.</h2>
-            <p class="text-gray-400 text-lg mb-12 max-w-xl mx-auto">
-                We are currently seeking early-stage investors and 100 "Alpha-Adopters" to help us bring Project Baloo to life.
+    <section id="engineering" class="py-32 bg-white/5 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20">
+                <h2 class="text-5xl font-black mb-4">Strategic Architecture.</h2>
+                <div class="h-1 w-24 bg-cyan-400"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="img-box border border-white/10">
+                    <img src="Images/skel.jpg" alt="Engineering Blueprint">
+                </div>
+                <div class="grid grid-cols-1 gap-8">
+                    <div class="glass p-8 rounded-3xl">
+                        <span class="text-cyan-400 font-black mb-2 block">01 / COMPUTE</span>
+                        <h4 class="text-xl font-bold mb-2">Brain-in-Head Array</h4>
+                        <p class="text-sm text-gray-500">Head-mounted Raspberry Pi 5 / ESP32-S3 units optimize sensor field-of-view and protect core electronics from impact.</p>
+                    </div>
+                    <div class="glass p-8 rounded-3xl">
+                        <span class="text-cyan-400 font-black mb-2 block">02 / KINETICS</span>
+                        <h4 class="text-xl font-bold mb-2">4WD High-Torque Hubs</h4>
+                        <p class="text-sm text-gray-500">Brushless hub motors provide low-center-of-gravity stability, essential for active ride-on safety and multi-terrain navigation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="governance" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-24 items-center">
+            <div class="img-box order-2 md:order-1 max-w-md mx-auto">
+                <img src="Images/parent-app.jpg" alt="Guardian Dashboard UI">
+            </div>
+            <div class="order-1 md:order-2 space-y-8">
+                <h2 class="text-5xl font-black italic">Guardian <br><span class="text-cyan-400">Dashboard.</span></h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    The Baloo interface allows for precision governance. Parents can define **Safe-Zones**, monitor hardware vitals, and deploy updated **Story-Walk™** modules with a single tap.
+                </p>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-cyan-400 rounded-full"></span> Real-time spatial tracking & geofencing</li>
+                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-cyan-400 rounded-full"></span> Active LFP battery health monitoring</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 px-6">
+        <div class="max-w-5xl mx-auto glass p-16 md:p-32 rounded-[4rem] text-center border-white/5">
+            <h2 class="text-5xl md:text-8xl font-black mb-10 tracking-tight leading-none">THE NEXT <br>FRONTIER.</h2>
+            <p class="text-gray-400 text-xl mb-16 max-w-2xl mx-auto font-light">
+                We are currently facilitating seed-round discussions with partners who share our vision for the future of empathic robotics.
             </p>
-            <div class="flex flex-col md:flex-row justify-center gap-6">
-                <button class="cta-button px-12 py-4 rounded-full font-bold">Invest in Project Baloo</button>
-                <button class="bg-white text-black px-12 py-4 rounded-full font-bold hover:bg-gray-200">Pre-Order Now</button>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="mailto:prabhakarmdes12@gmail.com" class="bg-cyan-500 text-black px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-105 transition">Investor Relations</a>
+                <a href="#" class="text-white border border-white/20 px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white/5 transition">Market Roadmap</a>
             </div>
-            <p class="mt-8 text-xs text-gray-500 uppercase tracking-widest">Designed by Prabhakar Kumar | Master of Design, IIT Delhi</p>
         </div>
     </section>
 
-    <footer class="py-12 text-center text-gray-600 text-sm border-t border-white/5">
-        &copy; 2026 Multidisciplinary Creative Co. Robotics Division. Built at the intersection of Art & Logic.
+    <footer class="py-12 border-t border-white/5 text-center text-gray-700 text-[10px] uppercase tracking-[0.8em] font-bold">
+        BALOO ROBOTICS | ADVANCED HRI SYSTEMS | 2026
     </footer>
 
 </body>

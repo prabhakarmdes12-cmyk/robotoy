@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +7,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --neon-blue: #00f2ff; --bg-color: #030406; --text-color: #fff; --card-bg: rgba(255, 255, 255, 0.02); }
-        .light-mode { --bg-color: #f0f2f5; --text-color: #1a1a1a; --card-bg: rgba(0, 0, 0, 0.05); }
+        :root { --neon-blue: #00f2ff; --bg-color: #030406; --text-color: #fff; --card-bg: rgba(255, 255, 255, 0.02); --border-color: rgba(255, 255, 255, 0.1); }
+        .light-mode { --bg-color: #f8fafc; --text-color: #0f172a; --card-bg: rgba(15, 23, 42, 0.05); --border-color: rgba(0, 0, 0, 0.1); }
         
         body { font-family: 'Outfit', 'Noto Sans Devanagari', sans-serif; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.5s ease, color 0.5s ease; overflow-x: hidden; }
         
         /* Enhanced Glass & Hover Effects */
-        .glass { background: var(--card-bg); backdrop-filter: blur(15px); border: 1px solid rgba(125, 125, 125, 0.15); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .glass:hover { border-color: rgba(0, 242, 255, 0.3); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .glass { background: var(--card-bg); backdrop-filter: blur(15px); border: 1px solid var(--border-color); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .glass:hover { border-color: rgba(0, 242, 255, 0.3); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
         
         .text-gradient { background: linear-gradient(to right, var(--text-color), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        .img-box { position: relative; width: 100%; border-radius: 2.5rem; overflow: hidden; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .img-box { position: relative; width: 100%; border-radius: 2.5rem; overflow: hidden; background: #0a0a0a; border: 1px solid var(--border-color); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .img-box:hover { border-color: var(--neon-blue); transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px rgba(0, 242, 255, 0.15); }
-        .img-box img { transition: transform 0.8s ease; }
+        .img-box img { transition: transform 0.8s ease; width: 100%; height: auto; object-fit: cover; }
         .img-box:hover img { transform: scale(1.05); }
 
         .nav-link { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #999; transition: all 0.3s; }
         .nav-link:hover { color: var(--neon-blue); text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
 
         /* Custom Entry Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fade-up { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
         .delay-300 { animation-delay: 300ms; }
+        
+        input, select, textarea { color: var(--text-color) !important; background: var(--card-bg) !important; border-color: var(--border-color) !important; }
+        input::placeholder, textarea::placeholder { color: #888 !important; }
     </style>
 </head>
 <body class="antialiased">
@@ -47,6 +47,7 @@
                 <div class="hidden lg:flex space-x-6 items-center mr-2">
                     <a href="#philosophy" class="nav-link" data-key="nav_phil">Philosophy</a>
                     <a href="#engineering" class="nav-link" data-key="nav_eng">Engineering</a>
+                    <a href="#governance" class="nav-link" data-key="nav_gov">Governance</a>
                 </div>
                 
                 <select id="langSelect" class="bg-transparent border border-gray-500/30 hover:border-cyan-400 rounded-lg px-2 py-1.5 text-[10px] uppercase font-bold outline-none cursor-pointer transition-colors">
@@ -60,27 +61,52 @@
                     <svg id="moonIcon" class="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                 </button>
 
-                <a href="mailto:prabhakarmdes12@gmail.com" class="hidden sm:block bg-cyan-500 text-black px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-cyan-300 hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(0,242,255,0.3)]" data-key="nav_cta">Partner With Us</a>
+                <a href="#contact" class="hidden sm:block bg-cyan-500 text-black px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-cyan-300 hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(0,242,255,0.3)]" data-key="nav_cta">Partner With Us</a>
             </div>
         </div>
     </nav>
 
     <header class="min-h-screen flex flex-col justify-center items-center px-6 pt-32 pb-16 text-center">
         <h1 class="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-gradient leading-none mb-8 uppercase animate-fade-up delay-100" data-key="hero_title">Redefining <br>Companionship.</h1>
-        <p class="max-w-2xl text-gray-400 text-base md:text-xl mb-12 font-light leading-relaxed animate-fade-up delay-200" data-key="hero_desc">
+        <p class="max-w-2xl text-gray-500 text-base md:text-xl mb-12 font-light leading-relaxed animate-fade-up delay-200" data-key="hero_desc">
             Baloo is a high-performance Guardian Platform that integrates Edge-AI and modular robotics to provide screen-free mentorship for the next generation.
         </p>
         <div class="max-w-5xl w-full img-box shadow-[0_20px_80px_rgba(0,0,0,0.8)] animate-fade-up delay-300">
-            <img src="Images/hero-panda.jpg" alt="Baloo Flagship Product" class="w-full h-auto object-cover">
+            <img src="Images/hero-panda.jpg" alt="Baloo Flagship Product">
         </div>
     </header>
 
-    <section id="engineering" class="py-24 md:py-32 bg-white/5 px-6 border-t border-white/5">
+    <section id="philosophy" class="py-24 md:py-32 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+            <div class="space-y-12 animate-fade-up">
+                <h2 class="text-4xl md:text-5xl font-black italic leading-tight" data-key="phil_title">Human-Centric <br><span class="text-cyan-400">Design Logic.</span></h2>
+                <div class="space-y-10">
+                    <div class="glass p-6 rounded-3xl group">
+                        <h4 class="text-xl font-bold mb-3 group-hover:text-cyan-400 transition" data-key="phil_mod_title">Modular Durability</h4>
+                        <p class="text-gray-500 leading-relaxed text-sm" data-key="phil_mod_desc">
+                            Our "Torn-but-Functional" architecture decouples the aesthetic skin from the rugged mechanical exoskeleton, ensuring product longevity in high-impact environments.
+                        </p>
+                    </div>
+                    <div class="glass p-6 rounded-3xl group">
+                        <h4 class="text-xl font-bold mb-3 group-hover:text-cyan-400 transition" data-key="phil_sov_title">Autonomous Sovereignty</h4>
+                        <p class="text-gray-500 leading-relaxed text-sm" data-key="phil_sov_desc">
+                            Baloo operates on a proprietary Edge-AI stack. All environmental data and voice interactions are processed locally, ensuring 100% data privacy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="img-box animate-fade-up delay-200">
+                <img src="Images/concept-soft.jpg" alt="Material Excellence">
+            </div>
+        </div>
+    </section>
+
+    <section id="engineering" class="py-24 md:py-32 bg-black/10 px-6 border-t border-white/5">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-black mb-12 italic text-center md:text-left animate-fade-up" data-key="eng_title">Strategic Architecture.</h2>
             <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-                <div class="img-box border border-white/10 animate-fade-up delay-100">
-                    <img src="Images/skel.jpg" alt="Engineering Blueprint" class="w-full h-auto">
+                <div class="img-box animate-fade-up delay-100">
+                    <img src="Images/skel.jpg" alt="Engineering Blueprint">
                 </div>
                 <div class="grid grid-cols-1 gap-8">
                     <div class="glass p-8 rounded-3xl animate-fade-up delay-200 group">
@@ -88,17 +114,119 @@
                         <h4 class="text-xl font-bold mb-2" data-key="comp_title">Brain-in-Head Array</h4>
                         <p class="text-sm text-gray-500 leading-relaxed" data-key="comp_desc">Head-mounted Raspberry Pi 5 / ESP32-S3 units optimize sensor field-of-view and protect core electronics from impact.</p>
                     </div>
+                    <div class="glass p-8 rounded-3xl animate-fade-up delay-300 group">
+                        <span class="text-cyan-400 font-black mb-2 block group-hover:tracking-widest transition-all duration-500">02 / KINETICS</span>
+                        <h4 class="text-xl font-bold mb-2" data-key="kin_title">4WD High-Torque Hubs</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed" data-key="kin_desc">Brushless hub motors provide low-center-of-gravity stability, essential for active ride-on safety and multi-terrain navigation.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-white/5 text-center text-gray-700 text-[10px] uppercase tracking-[0.8em] font-bold">
+    <section id="governance" class="py-24 md:py-32 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+            <div class="img-box order-2 md:order-1 max-w-md mx-auto animate-fade-up delay-100 bg-transparent border-none shadow-none hover:transform-none">
+                <img src="Images/parent-app.png" alt="Guardian Dashboard UI" class="rounded-3xl shadow-[0_20px_50px_rgba(0,242,255,0.1)]">
+            </div>
+            <div class="order-1 md:order-2 space-y-8 animate-fade-up">
+                <h2 class="text-4xl md:text-5xl font-black italic" data-key="gov_title">Guardian <br><span class="text-cyan-400">Dashboard.</span></h2>
+                <p class="text-gray-500 text-lg leading-relaxed" data-key="gov_desc">
+                    The Baloo interface allows for precision governance. Parents can define Safe-Zones, monitor hardware vitals, and deploy updated Story-Walk™ modules with a single tap.
+                </p>
+                <ul class="space-y-4 text-sm text-gray-400 font-bold">
+                    <li class="flex items-center gap-3"><span class="h-2 w-2 bg-cyan-400 rounded-full animate-pulse"></span> <span data-key="gov_li1">Real-time spatial tracking & geofencing</span></li>
+                    <li class="flex items-center gap-3"><span class="h-2 w-2 bg-cyan-400 rounded-full animate-pulse"></span> <span data-key="gov_li2">Active LFP battery health monitoring</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 md:py-40 px-6">
+        <div class="max-w-5xl mx-auto glass p-12 md:p-32 rounded-[3rem] md:rounded-[4rem] text-center animate-fade-up">
+            <h2 class="text-4xl md:text-7xl font-black mb-8 tracking-tight leading-none uppercase" data-key="next_title">The Next <br>Frontier.</h2>
+            <p class="text-gray-500 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light" data-key="next_desc">
+                We are currently facilitating seed-round discussions with partners who share our vision for the future of empathic robotics.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#contact" class="w-full md:w-auto bg-cyan-500 text-black px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-105 transition shadow-[0_0_20px_rgba(0,242,255,0.4)]" data-key="next_btn1">Investor Relations</a>
+                <a href="#specs" class="w-full md:w-auto text-inherit border border-gray-500/30 px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white/5 hover:border-cyan-400 transition" data-key="next_btn2">View Specs</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="specs" class="py-24 px-6 border-t border-white/5 bg-black/10">
+        <div class="max-w-4xl mx-auto animate-fade-up">
+            <h2 class="text-3xl md:text-4xl font-black mb-12 italic tracking-tighter uppercase text-center md:text-left" data-key="spec_title">
+                Engineering <span class="text-cyan-400">Benchmarks.</span>
+            </h2>
+            <div class="glass rounded-[2rem] overflow-hidden">
+                <table class="w-full text-left text-xs md:text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-500/20 bg-black/5">
+                            <th class="p-4 md:p-6 font-black uppercase tracking-widest text-cyan-400" data-key="th_comp">Component</th>
+                            <th class="p-4 md:p-6 font-black uppercase tracking-widest text-gray-500" data-key="th_spec">Specification</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-500 font-medium">
+                        <tr class="border-b border-gray-500/10 hover:bg-white/5 transition">
+                            <td class="p-4 md:p-6 font-bold" data-key="row1_l">Primary Compute</td>
+                            <td class="p-4 md:p-6" data-key="row1_r">Raspberry Pi 5 (8GB) + ESP32-S3 Edge-AI</td>
+                        </tr>
+                        <tr class="border-b border-gray-500/10 hover:bg-white/5 transition">
+                            <td class="p-4 md:p-6 font-bold" data-key="row2_l">Spatial Awareness</td>
+                            <td class="p-4 md:p-6" data-key="row2_r">360° Ultrasonic Array + IMU Sensor</td>
+                        </tr>
+                        <tr class="border-b border-gray-500/10 hover:bg-white/5 transition">
+                            <td class="p-4 md:p-6 font-bold" data-key="row3_l">Drive System</td>
+                            <td class="p-4 md:p-6" data-key="row3_r">4x Brushless Hub Motors (4WD)</td>
+                        </tr>
+                        <tr class="border-b border-gray-500/10 hover:bg-white/5 transition">
+                            <td class="p-4 md:p-6 font-bold" data-key="row4_l">Power Cell</td>
+                            <td class="p-4 md:p-6" data-key="row4_r">Central LFP Battery Pack</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition">
+                            <td class="p-4 md:p-6 font-bold" data-key="row5_l">HRI Interface</td>
+                            <td class="p-4 md:p-6" data-key="row5_r">OLED Eye-Display + 8x8 Heartbeat LED</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 md:py-32 px-6 max-w-4xl mx-auto border-t border-white/5">
+        <div class="text-center mb-16 animate-fade-up">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic" data-key="contact_title">
+                Initiate <span class="text-cyan-400">Protocol.</span>
+            </h2>
+            <p class="text-gray-500 font-light" data-key="contact_sub">Direct channel for manufacturing partners and venture inquiries.</p>
+        </div>
+        
+        <form class="space-y-6 animate-fade-up delay-100">
+            <div class="grid md:grid-cols-2 gap-6">
+                <input type="text" data-placeholder="p_name" placeholder="Full Name" class="w-full p-5 rounded-2xl focus:border-cyan-400 focus:outline-none transition outline-none border">
+                <input type="email" data-placeholder="p_email" placeholder="Corporate Email" class="w-full p-5 rounded-2xl focus:border-cyan-400 focus:outline-none transition outline-none border">
+            </div>
+            <select class="w-full p-5 rounded-2xl focus:border-cyan-400 focus:outline-none appearance-none outline-none border font-medium">
+                <option data-key="opt1">Strategic Partnership</option>
+                <option data-key="opt2">Investment Inquiry</option>
+                <option data-key="opt3">Media & Press</option>
+            </select>
+            <textarea rows="5" data-placeholder="p_msg" placeholder="Inquiry Details" class="w-full p-5 rounded-2xl focus:border-cyan-400 focus:outline-none transition outline-none border"></textarea>
+            
+            <button type="button" class="w-full bg-cyan-500 text-black font-black py-5 rounded-2xl uppercase tracking-widest hover:scale-[1.02] shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_rgba(0,242,255,0.6)] transition-all duration-300" data-key="btn_send">
+                Submit Inquiry
+            </button>
+        </form>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center text-gray-500 text-[10px] uppercase tracking-[0.8em] font-bold">
         BALOO ROBOTICS | ADVANCED HRI SYSTEMS | 2026
     </footer>
 
     <script>
-        // --- Theme Switcher ---
+        // Theme Switcher Logic
         const body = document.body;
         const themeBtn = document.getElementById('themeToggle');
         const sun = document.getElementById('sunIcon');
@@ -110,47 +238,106 @@
             moon.classList.toggle('hidden');
         });
 
-        // --- Translation Data ---
+        // Massive Translation Dictionary covering the ENTIRE site
         const translations = {
             en: {
-                nav_phil: "Philosophy",
-                nav_eng: "Engineering",
-                nav_cta: "Partner With Us",
+                nav_phil: "Philosophy", nav_eng: "Engineering", nav_gov: "Governance", nav_cta: "Partner With Us",
                 hero_title: "Redefining <br>Companionship.",
-                hero_desc: "Baloo is a high-performance Guardian Platform that integrates Edge-AI and modular robotics.",
+                hero_desc: "Baloo is a high-performance Guardian Platform that integrates Edge-AI and modular robotics to provide screen-free mentorship for the next generation.",
+                phil_title: "Human-Centric <br><span class='text-cyan-400'>Design Logic.</span>",
+                phil_mod_title: "Modular Durability",
+                phil_mod_desc: "Our 'Torn-but-Functional' architecture decouples the aesthetic skin from the rugged mechanical exoskeleton, ensuring product longevity in high-impact environments.",
+                phil_sov_title: "Autonomous Sovereignty",
+                phil_sov_desc: "Baloo operates on a proprietary Edge-AI stack. All environmental data and voice interactions are processed locally, ensuring 100% data privacy.",
                 eng_title: "Strategic Architecture.",
-                comp_title: "Brain-in-Head Array",
-                comp_desc: "Head-mounted Raspberry Pi 5 units optimize sensor field-of-view."
+                comp_title: "Brain-in-Head Array", comp_desc: "Head-mounted Raspberry Pi 5 / ESP32-S3 units optimize sensor field-of-view and protect core electronics from impact.",
+                kin_title: "4WD High-Torque Hubs", kin_desc: "Brushless hub motors provide low-center-of-gravity stability, essential for active ride-on safety and multi-terrain navigation.",
+                gov_title: "Guardian <br><span class='text-cyan-400'>Dashboard.</span>",
+                gov_desc: "The Baloo interface allows for precision governance. Parents can define Safe-Zones, monitor hardware vitals, and deploy updated Story-Walk™ modules with a single tap.",
+                gov_li1: "Real-time spatial tracking & geofencing", gov_li2: "Active LFP battery health monitoring",
+                next_title: "The Next <br>Frontier.", next_desc: "We are currently facilitating seed-round discussions with partners who share our vision for the future of empathic robotics.",
+                next_btn1: "Investor Relations", next_btn2: "View Specs",
+                spec_title: "Engineering <span class='text-cyan-400'>Benchmarks.</span>", th_comp: "Component", th_spec: "Specification",
+                row1_l: "Primary Compute", row1_r: "Raspberry Pi 5 (8GB) + ESP32-S3 Edge-AI",
+                row2_l: "Spatial Awareness", row2_r: "360° Ultrasonic Array + IMU Sensor",
+                row3_l: "Drive System", row3_r: "4x Brushless Hub Motors (4WD)",
+                row4_l: "Power Cell", row4_r: "Central LFP Battery Pack",
+                row5_l: "HRI Interface", row5_r: "OLED Eye-Display + 8x8 Heartbeat LED",
+                contact_title: "Initiate <span class='text-cyan-400'>Protocol.</span>", contact_sub: "Direct channel for manufacturing partners and venture inquiries.",
+                p_name: "Full Name", p_email: "Corporate Email", p_msg: "Inquiry Details",
+                opt1: "Strategic Partnership", opt2: "Investment Inquiry", opt3: "Media & Press", btn_send: "Submit Inquiry"
             },
             hi: {
-                nav_phil: "दर्शन",
-                nav_eng: "अभियांत्रिकी",
-                nav_cta: "हमारे भागीदार बनें",
+                nav_phil: "दर्शन", nav_eng: "अभियांत्रिकी", nav_gov: "गार्जियन ऐप", nav_cta: "भागीदार बनें",
                 hero_title: "साथ की <br>नई परिभाषा।",
-                hero_desc: "बालू एक उच्च-प्रदर्शन गार्जियन प्लेटफॉर्म है जो आधुनिक रोबोटिक्स को जोड़ता है।",
+                hero_desc: "बालू एक उच्च-प्रदर्शन गार्जियन प्लेटफॉर्म है जो एज-AI और मॉड्यूलर रोबोटिक्स को जोड़कर अगली पीढ़ी को स्क्रीन-मुक्त मार्गदर्शन प्रदान करता है।",
+                phil_title: "मानव-केंद्रित <br><span class='text-cyan-400'>डिज़ाइन लॉजिक।</span>",
+                phil_mod_title: "मॉड्यूलर मजबूती",
+                phil_mod_desc: "हमारी संरचना बाहरी आवरण को मजबूत मैकेनिकल ढांचे से अलग करती है, जिससे यह उच्च-प्रभाव वाले वातावरण में भी लंबे समय तक सुरक्षित रहता है।",
+                phil_sov_title: "स्वायत्त संप्रभुता (Privacy)",
+                phil_sov_desc: "बालू एक प्रोप्रायटरी एज-AI स्टैक पर काम करता है। सभी पर्यावरणीय डेटा और वॉयस इंटरैक्शन को लोकल प्रोसेस किया जाता है, जिससे 100% डेटा प्राइवेसी सुनिश्चित होती है।",
                 eng_title: "रणनीतिक संरचना।",
-                comp_title: "हेड-माउंटेड ब्रेन",
-                comp_desc: "सिर में लगे रास्पबेरी पाई 5 यूनिट सेंसर रेंज को बेहतर बनाते हैं।"
+                comp_title: "हेड-माउंटेड ब्रेन एरे", comp_desc: "सिर में लगे रास्पबेरी पाई 5 / ESP32-S3 यूनिट सेंसर फील्ड-ऑफ-व्यू को अनुकूलित करते हैं और मुख्य इलेक्ट्रॉनिक्स को प्रभाव से बचाते हैं।",
+                kin_title: "4WD हाई-टॉर्क हब", kin_desc: "ब्रशलेस हब मोटर्स कम-गुरुत्वाकर्षण-केंद्र स्थिरता प्रदान करते हैं, जो सक्रिय सवारी सुरक्षा और मल्टी-टेरेन नेविगेशन के लिए आवश्यक है।",
+                gov_title: "गार्जियन <br><span class='text-cyan-400'>डैशबोर्ड।</span>",
+                gov_desc: "बालू इंटरफ़ेस माता-पिता को सटीक नियंत्रण की अनुमति देता है। आप सुरक्षित-क्षेत्र (Safe-Zones) परिभाषित कर सकते हैं, हार्डवेयर की स्थिति देख सकते हैं, और नए मॉड्यूल डिप्लॉय कर सकते हैं।",
+                gov_li1: "रीयल-टाइम ट्रैकिंग और जियोफेंसिंग", gov_li2: "सक्रिय LFP बैटरी स्वास्थ्य निगरानी",
+                next_title: "अगला <br>कदम।", next_desc: "हम वर्तमान में उन भागीदारों के साथ चर्चा कर रहे हैं जो एम्पैथिक रोबोटिक्स के भविष्य के लिए हमारे दृष्टिकोण को साझा करते हैं।",
+                next_btn1: "निवेशक संबंध", next_btn2: "विनिर्देश (Specs)",
+                spec_title: "अभियांत्रिकी <span class='text-cyan-400'>मानक।</span>", th_comp: "घटक (Component)", th_spec: "विवरण (Spec)",
+                row1_l: "मुख्य कंप्यूटर", row1_r: "रास्पबेरी पाई 5 (8GB) + ESP32-S3",
+                row2_l: "स्थानिक जागरूकता", row2_r: "360° अल्ट्रासोनिक एरे + IMU सेंसर",
+                row3_l: "ड्राइव सिस्टम", row3_r: "4x ब्रशलेस हब मोटर्स (4WD)",
+                row4_l: "पावर सेल", row4_r: "सेंट्रल LFP बैटरी पैक",
+                row5_l: "HRI इंटरफेस", row5_r: "OLED डिस्प्ले + हार्टबीट LED",
+                contact_title: "संपर्क <span class='text-cyan-400'>सूत्र।</span>", contact_sub: "भागीदारों और निवेशकों के लिए सीधा माध्यम।",
+                p_name: "पूरा नाम", p_email: "कॉर्पोरेट ईमेल", p_msg: "पूछताछ का विवरण",
+                opt1: "रणनीतिक साझेदारी", opt2: "निवेश पूछताछ", opt3: "मीडिया और प्रेस", btn_send: "पूछताछ भेजें"
             },
             bho: {
-                nav_phil: "सोच",
-                nav_eng: "बनावट",
-                nav_cta: "हमरा साथे जुड़ीं",
+                nav_phil: "सोच", nav_eng: "बनावट", nav_gov: "गार्जियन ऐप", nav_cta: "हमरा साथे जुड़ीं",
                 hero_title: "दोस्ती के <br>नया पहचान।",
-                hero_desc: "बालू एगो हाई-परफॉरमेंस गार्जियन प्लेटफॉर्म ह जवन रोबोटिक्स के खेल से जोड़ेला।",
+                hero_desc: "बालू एगो हाई-परफॉरमेंस गार्जियन प्लेटफॉर्म ह जवन AI और रोबोटिक्स के जोड़ के लइकन के बिना स्क्रीन के बढ़िया सिख देवेला।",
+                phil_title: "इंसान के सोच <br><span class='text-cyan-400'>के हिसाब से।</span>",
+                phil_mod_title: "मजबूत बनावट",
+                phil_mod_desc: "एकर बाहरी हिस्सा अउर अंदरूनी ढांचा अलग-अलग बा, जेकरा से ई गिरे-पड़े पर भी जल्दी ना टूटेला अउर लंबा समय ले चलेला।",
+                phil_sov_title: "आपन समझ (Privacy)",
+                phil_sov_desc: "बालू आपन खुद के AI पर काम करेला। रउवा लइका के जे भी बात होखी, ऊ बालू के अंदर ही रही, कवनो सर्वर पर ना जाई। प्राइवेसी 100% पक्का।",
                 eng_title: "मजबूत बनावट।",
-                comp_title: "दिमाग वाला हिस्सा",
-                comp_desc: "मूरी में लागल रास्पबेरी पाई सेंसर के बढ़िया से काम करे में मदद करेला।"
+                comp_title: "दिमाग वाला हिस्सा", comp_desc: "मूरी में लागल रास्पबेरी पाई सेंसर के बढ़िया से काम करे में मदद करेला अउर मेन मशीन के बचावेला।",
+                kin_title: "4WD मोटर सिस्टम", kin_desc: "चारों चक्का में लागल मजबूत मोटर एकरा के बैलेंस राखेला, जवन लइकन के सवारी करे खातिर एकदम सेफ बा।",
+                gov_title: "गार्जियन <br><span class='text-cyan-400'>ऐप।</span>",
+                gov_desc: "माई-बाबूजी बालू ऐप से सब कंट्रोल क सकत बाड़े। रउवा सुरक्षित जगह तय क सकत बानी अउर एक क्लिक में नया कहानी डाल सकत बानी।",
+                gov_li1: "तुरंत लोकेशन जानकारी", gov_li2: "बैटरी के हेल्थ चेक",
+                next_title: "आगे के <br>राह।", next_desc: "हमनी के ओह लोग संगे निवेश के बात कर रहल बानी जे हमनी के रोबोटिक्स के सपना के समझेला।",
+                next_btn1: "निवेश के बात", next_btn2: "जानकारी देखीं",
+                spec_title: "मजबूत <span class='text-cyan-400'>बनावट।</span>", th_comp: "पुर्जा", th_spec: "जानकारी",
+                row1_l: "मुख्य दिमाग", row1_r: "रास्पबेरी पाई 5 (8GB) + ESP32-S3",
+                row2_l: "रास्ता के समझ", row2_r: "360° अल्ट्रासोनिक एरे + सेंसर",
+                row3_l: "चले वाला सिस्टम", row3_r: "4x ब्रशलेस हब मोटर्स (4WD)",
+                row4_l: "बैटरी", row4_r: "मजबूत LFP बैटरी पैक",
+                row5_l: "चेहरा अउर धड़कन", row5_r: "OLED आँख + धड़कन वाला LED",
+                contact_title: "बातचीत <span class='text-cyan-400'>शुरू करीं।</span>", contact_sub: "साझेदारी अउर निवेश खातिर इहाँ लिखीं।",
+                p_name: "पूरा नाम", p_email: "कंपनी के ईमेल", p_msg: "का बात बा?",
+                opt1: "साझेदारी", opt2: "निवेश", opt3: "प्रेस", btn_send: "संदेश भेजीं"
             }
         };
 
         const langSelect = document.getElementById('langSelect');
         langSelect.addEventListener('change', (e) => {
             const lang = e.target.value;
+            // Translate Inner HTML
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (translations[lang] && translations[lang][key]) {
                     el.innerHTML = translations[lang][key];
+                }
+            });
+            // Translate Placeholders
+            document.querySelectorAll('[data-placeholder]').forEach(el => {
+                const pKey = el.getAttribute('data-placeholder');
+                if (translations[lang] && translations[lang][pKey]) {
+                    el.placeholder = translations[lang][pKey];
                 }
             });
         });

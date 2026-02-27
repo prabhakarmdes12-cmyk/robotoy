@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baloo | The Future of Autonomous Empathic Play</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --neon-blue: #00f2ff; --deep-space: #030406; }
-        body { font-family: 'Outfit', sans-serif; background-color: var(--deep-space); color: #fff; overflow-x: hidden; }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .text-gradient { background: linear-gradient(to right, #fff, var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        :root { --neon-blue: #00f2ff; --bg-color: #030406; --text-color: #fff; --card-bg: rgba(255, 255, 255, 0.02); }
+        .light-mode { --bg-color: #f0f2f5; --text-color: #1a1a1a; --card-bg: rgba(0, 0, 0, 0.05); }
+        
+        body { font-family: 'Outfit', 'Noto Sans Devanagari', sans-serif; background-color: var(--bg-color); color: var(--text-color); transition: all 0.5s ease; overflow-x: hidden; }
+        .glass { background: var(--card-bg); backdrop-filter: blur(15px); border: 1px solid rgba(125, 125, 125, 0.1); }
+        .text-gradient { background: linear-gradient(to right, var(--text-color), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .img-box { position: relative; width: 100%; border-radius: 2.5rem; overflow: hidden; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); transition: all 0.5s ease; }
-        .img-box:hover { border-color: var(--neon-blue); transform: translateY(-5px); }
         .nav-link { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #999; transition: color 0.3s; }
         .nav-link:hover { color: var(--neon-blue); }
     </style>
@@ -22,56 +23,38 @@
     <nav class="fixed w-full z-50 p-6">
         <div class="max-w-7xl mx-auto glass rounded-2xl px-8 py-4 flex justify-between items-center">
             <div class="font-black tracking-tighter text-2xl italic">BALOO<span class="text-cyan-400">.</span></div>
-            <div class="hidden md:flex space-x-10">
-                <a href="#philosophy" class="nav-link">Philosophy</a>
-                <a href="#engineering" class="nav-link">Engineering</a>
-                <a href="#governance" class="nav-link">Governance</a>
+            
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#philosophy" class="nav-link" data-key="nav_phil">Philosophy</a>
+                <a href="#engineering" class="nav-link" data-key="nav_eng">Engineering</a>
+                <select id="langSelect" class="bg-transparent border border-white/20 rounded px-2 py-1 text-[10px] uppercase font-bold outline-none cursor-pointer">
+                    <option value="en" class="text-black">EN</option>
+                    <option value="hi" class="text-black">हिन्दी</option>
+                    <option value="bho" class="text-black">भोजपुरी</option>
+                </select>
+                <button id="themeToggle" class="p-2 glass rounded-full hover:scale-110 transition">
+                    <svg id="sunIcon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                    <svg id="moonIcon" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                </button>
             </div>
-            <a href="mailto:prabhakarmdes12@gmail.com" class="bg-white text-black px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-cyan-400 transition">Partner With Us</a>
+            
+            <a href="mailto:prabhakarmdes12@gmail.com" class="bg-cyan-500 text-black px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest" data-key="nav_cta">Partner With Us</a>
         </div>
     </nav>
 
     <header class="min-h-screen flex flex-col justify-center items-center px-6 pt-32 pb-16 text-center">
-        <h1 class="text-6xl md:text-9xl font-black tracking-tighter text-gradient leading-none mb-8">REDEFINING <br>COMPANIONSHIP.</h1>
-        <p class="max-w-2xl text-gray-400 text-lg md:text-xl mb-12 font-light leading-relaxed">
-            Baloo is a high-performance **Guardian Platform** that integrates Edge-AI and modular robotics to provide screen-free mentorship for the next generation.
+        <h1 class="text-6xl md:text-9xl font-black tracking-tighter text-gradient leading-none mb-8 uppercase" data-key="hero_title">Redefining <br>Companionship.</h1>
+        <p class="max-w-2xl text-gray-400 text-lg md:text-xl mb-12 font-light leading-relaxed" data-key="hero_desc">
+            Baloo is a high-performance Guardian Platform that integrates Edge-AI and modular robotics to provide screen-free mentorship for the next generation.
         </p>
         <div class="max-w-5xl w-full img-box shadow-[0_20px_80px_rgba(0,0,0,0.8)]">
             <img src="Images/hero-panda.jpg" alt="Baloo Flagship Product">
         </div>
     </header>
 
-    <section id="philosophy" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-24 items-center">
-            <div class="space-y-12">
-                <h2 class="text-5xl font-black italic leading-tight">Human-Centric <br><span class="text-cyan-400">Design Logic.</span></h2>
-                <div class="space-y-10">
-                    <div>
-                        <h4 class="text-xl font-bold mb-3">Modular Durability</h4>
-                        <p class="text-gray-400 leading-relaxed">
-                            Our "Torn-but-Functional" architecture decouples the aesthetic skin from the rugged mechanical exoskeleton, ensuring product longevity in high-impact environments.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-3">Autonomous Sovereignty</h4>
-                        <p class="text-gray-400 leading-relaxed">
-                            Baloo operates on a proprietary Edge-AI stack. All environmental data and voice interactions are processed locally, ensuring 100% data privacy.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="img-box">
-                <img src="Images/concept-soft.jpg" alt="Material Excellence">
-            </div>
-        </div>
-    </section>
-
     <section id="engineering" class="py-32 bg-white/5 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-20">
-                <h2 class="text-5xl font-black mb-4">Strategic Architecture.</h2>
-                <div class="h-1 w-24 bg-cyan-400"></div>
-            </div>
+            <h2 class="text-5xl font-black mb-12 italic" data-key="eng_title">Strategic Architecture.</h2>
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="img-box border border-white/10">
                     <img src="Images/skel.jpg" alt="Engineering Blueprint">
@@ -79,117 +62,73 @@
                 <div class="grid grid-cols-1 gap-8">
                     <div class="glass p-8 rounded-3xl">
                         <span class="text-cyan-400 font-black mb-2 block">01 / COMPUTE</span>
-                        <h4 class="text-xl font-bold mb-2">Brain-in-Head Array</h4>
-                        <p class="text-sm text-gray-500">Head-mounted Raspberry Pi 5 / ESP32-S3 units optimize sensor field-of-view and protect core electronics from impact.</p>
-                    </div>
-                    <div class="glass p-8 rounded-3xl">
-                        <span class="text-cyan-400 font-black mb-2 block">02 / KINETICS</span>
-                        <h4 class="text-xl font-bold mb-2">4WD High-Torque Hubs</h4>
-                        <p class="text-sm text-gray-500">Brushless hub motors provide low-center-of-gravity stability, essential for active ride-on safety and multi-terrain navigation.</p>
+                        <h4 class="text-xl font-bold mb-2" data-key="comp_title">Brain-in-Head Array</h4>
+                        <p class="text-sm text-gray-500" data-key="comp_desc">Head-mounted Raspberry Pi 5 / ESP32-S3 units optimize sensor field-of-view and protect core electronics from impact.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="governance" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-24 items-center">
-            <div class="img-box order-2 md:order-1 max-w-md mx-auto">
-                <img src="Images/parent-app.png" alt="Guardian Dashboard UI">
-            </div>
-            <div class="order-1 md:order-2 space-y-8">
-                <h2 class="text-5xl font-black italic">Guardian <br><span class="text-cyan-400">Dashboard.</span></h2>
-                <p class="text-gray-400 text-lg leading-relaxed">
-                    The Baloo interface allows for precision governance. Parents can define **Safe-Zones**, monitor hardware vitals, and deploy updated **Story-Walk™** modules with a single tap.
-                </p>
-                <ul class="space-y-4 text-sm text-gray-300">
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-cyan-400 rounded-full"></span> Real-time spatial tracking & geofencing</li>
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-cyan-400 rounded-full"></span> Active LFP battery health monitoring</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-40 px-6">
-        <div class="max-w-5xl mx-auto glass p-16 md:p-32 rounded-[4rem] text-center border-white/5">
-            <h2 class="text-5xl md:text-8xl font-black mb-10 tracking-tight leading-none">THE NEXT <br>FRONTIER.</h2>
-            <p class="text-gray-400 text-xl mb-16 max-w-2xl mx-auto font-light">
-                We are currently facilitating seed-round discussions with partners who share our vision for the future of empathic robotics.
-            </p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <a href="mailto:prabhakarmdes12@gmail.com" class="bg-cyan-500 text-black px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-105 transition">Investor Relations</a>
-                <a href="#" class="text-white border border-white/20 px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white/5 transition">Market Roadmap</a>
-            </div>
-        </div>
-        <section id="specs" class="py-24 px-6 border-t border-white/5 bg-black/20">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-black mb-12 italic tracking-tighter uppercase text-center md:text-left">Engineering <span class="text-cyan-400">Benchmarks.</span></h2>
-            <div class="glass rounded-[2rem] overflow-hidden">
-                <table class="w-full text-left text-sm">
-                    <thead>
-                        <tr class="border-b border-white/10 bg-white/5">
-                            <th class="p-6 font-black uppercase tracking-widest text-cyan-400">Component</th>
-                            <th class="p-6 font-black uppercase tracking-widest text-gray-400">Specification</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-gray-300">
-                        <tr class="border-b border-white/5">
-                            <td class="p-6 font-bold">Primary Compute</td>
-                            <td class="p-6">Raspberry Pi 5 (8GB) + ESP32-S3 Edge-AI Coprocessor</td>
-                        </tr>
-                        <tr class="border-b border-white/5">
-                            <td class="p-6 font-bold">Spatial Awareness</td>
-                            <td class="p-6">360° Ultrasonic Array + Tilt/Tip-over IMU Sensor</td>
-                        </tr>
-                        <tr class="border-b border-white/5">
-                            <td class="p-6 font-bold">Drive System</td>
-                            <td class="p-6">4x High-Torque Brushless Hub Motors (4WD)</td>
-                        </tr>
-                        <tr class="border-b border-white/5">
-                            <td class="p-6 font-bold">Power Cell</td>
-                            <td class="p-6">Central LFP (Lithium Iron Phosphate) Battery Pack</td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 font-bold">HRI Interface</td>
-                            <td class="p-6">OLED Eye-Display + 8x8 Heartbeat LED Matrix</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-32 px-6 max-w-4xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-black mb-4 uppercase tracking-tighter italic">Initiate <span class="text-cyan-400">Protocol.</span></h2>
-            <p class="text-gray-500 font-light">Direct channel for manufacturing partners and venture inquiries.</p>
-        </div>
-        
-        <form class="space-y-6">
-            <div class="grid md:grid-cols-2 gap-6">
-                <input type="text" placeholder="Full Name" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-cyan-400 focus:outline-none transition">
-                <input type="email" placeholder="Corporate Email" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-cyan-400 focus:outline-none transition">
-            </div>
-            <select class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-cyan-400 focus:outline-none appearance-none text-gray-400">
-                <option>Strategic Partnership</option>
-                <option>Investment Inquiry</option>
-                <option>Media & Press</option>
-                <option>Other</option>
-            </select>
-            <textarea rows="5" placeholder="Inquiry Details" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-cyan-400 focus:outline-none transition"></textarea>
-            
-            <button type="submit" class="w-full bg-cyan-400 text-black font-black py-5 rounded-2xl uppercase tracking-widest hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition duration-500">
-                Submit Inquiry
-            </button>
-        </form>
-    </section>
-    </section>
-
     <footer class="py-12 border-t border-white/5 text-center text-gray-700 text-[10px] uppercase tracking-[0.8em] font-bold">
         BALOO ROBOTICS | ADVANCED HRI SYSTEMS | 2026
     </footer>
 
+    <script>
+        // --- Theme Switcher ---
+        const body = document.body;
+        const themeBtn = document.getElementById('themeToggle');
+        const sun = document.getElementById('sunIcon');
+        const moon = document.getElementById('moonIcon');
+
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            sun.classList.toggle('hidden');
+            moon.classList.toggle('hidden');
+        });
+
+        // --- Translation Data ---
+        const translations = {
+            en: {
+                nav_phil: "Philosophy",
+                nav_eng: "Engineering",
+                nav_cta: "Partner With Us",
+                hero_title: "Redefining <br>Companionship.",
+                hero_desc: "Baloo is a high-performance Guardian Platform that integrates Edge-AI and modular robotics.",
+                eng_title: "Strategic Architecture.",
+                comp_title: "Brain-in-Head Array",
+                comp_desc: "Head-mounted Raspberry Pi 5 units optimize sensor field-of-view."
+            },
+            hi: {
+                nav_phil: "दर्शन",
+                nav_eng: "अभियांत्रिकी",
+                nav_cta: "हमारे भागीदार बनें",
+                hero_title: "साथ की <br>नई परिभाषा।",
+                hero_desc: "बालू एक उच्च-प्रदर्शन गार्जियन प्लेटफॉर्म है जो आधुनिक रोबोटिक्स को जोड़ता है।",
+                eng_title: "रणनीतिक संरचना।",
+                comp_title: "हेड-माउंटेड ब्रेन",
+                comp_desc: "सिर में लगे रास्पबेरी पाई 5 यूनिट सेंसर रेंज को बेहतर बनाते हैं।"
+            },
+            bho: {
+                nav_phil: "सोच",
+                nav_eng: "बनावट",
+                nav_cta: "हमरा साथे जुड़ीं",
+                hero_title: "दोस्ती के <br>नया पहचान।",
+                hero_desc: "बालू एगो हाई-परफॉरमेंस गार्जियन प्लेटफॉर्म ह जवन रोबोटिक्स के खेल से जोड़ेला।",
+                eng_title: "मजबूत बनावट।",
+                comp_title: "दिमाग वाला हिस्सा",
+                comp_desc: "मूरी में लागल रास्पबेरी पाई सेंसर के बढ़िया से काम करे में मदद करेला।"
+            }
+        };
+
+        const langSelect = document.getElementById('langSelect');
+        langSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                el.innerHTML = translations[lang][key];
+            });
+        });
+    </script>
 </body>
 </html>
-
-
